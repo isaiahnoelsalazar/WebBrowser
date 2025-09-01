@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using static Web_Browser.GlobalValues;
 
@@ -25,47 +26,80 @@ namespace Web_Browser
         {
             RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
             NewTab NewTab = new NewTab(this);
+            TableLayoutPanel Panel = new TableLayoutPanel
+            {
+                ColumnCount = 2
+            };
             Button TabButton = new Button();
-            TabButton.Size = new Size(0, 48);
-            TabButton.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            Button CloseButton = new Button();
+
+            Panel.ColumnStyles.Clear();
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75f));
+            Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25f));
+            Panel.Margin = new Padding(5, 0, 5, 0);
+
+            TabButton.Dock = DockStyle.Fill;
             TabButton.Text = "New Tab";
             TabButton.TextAlign = ContentAlignment.MiddleLeft;
-            TabButton.Margin = new Padding(8, 0, 8, 0);
-            TabButton.Padding = new Padding(8, 0, 8, 0);
+
+            CloseButton.Dock = DockStyle.Fill;
+            CloseButton.Text = "X";
+            CloseButton.TextAlign = ContentAlignment.MiddleCenter;
 
             int FinalTabCount = TabCount;
 
             TabButton.Click += (s, e) =>
             {
-                SelectTab(FinalTabCount);
+                SelectTab(NewTab);
+            };
+            CloseButton.Click += (s, e) =>
+            {
+                CloseTab(NewTab, Panel, TabButton);
             };
 
             TabList.RowStyles.Add(Row);
-            TabList.Controls.Add(TabButton);
+            Panel.Controls.Add(TabButton, 0, 0);
+            Panel.Controls.Add(CloseButton, 1, 0);
+            TabList.Controls.Add(Panel);
             TabButtons.Add(TabButton);
             Tabs.Add(NewTab);
-            SelectTab(FinalTabCount);
+            SelectTab(NewTab);
             TabCount++;
         }
 
-        void SelectTab(int Index)
+        void SelectTab(NewTab NewTab)
         {
-            if (Tabs[Index] != ActiveTab)
+            if (NewTab != ActiveTab)
             {
                 if (ActiveTab != null)
                 {
                     ActiveTab.Hide();
                     ActiveTab.MdiParent = null;
                 }
-                ActiveTab = Tabs[Index];
-                ActiveTabIndex = Index;
-                Tabs[Index].MdiParent = this;
-                Tabs[Index].Dock = DockStyle.Fill;
-                Tabs[Index].Show();
+                ActiveTab = NewTab;
+                ActiveTabIndex = Tabs.IndexOf(NewTab);
+                NewTab.MdiParent = this;
+                NewTab.Dock = DockStyle.Fill;
+                NewTab.Show();
             }
         }
 
-        private void AddNewTabButton_Click(object sender, System.EventArgs e)
+        void CloseTab(NewTab NewTab, TableLayoutPanel Container, Button TabButton)
+        {
+            TabList.Controls.Remove(Container);
+            TabButtons.Remove(TabButton);
+            NewTab.Hide();
+            NewTab.MdiParent = null;
+            Tabs.Remove(NewTab);
+            TabCount--;
+
+            if (NewTab == ActiveTab && Tabs.Count > 1)
+            {
+                SelectTab(Tabs[Tabs.Count - 1]);
+            }
+        }
+
+        private void AddNewTabButton_Click(object sender, EventArgs e)
         {
             AddNewTab();
         }

@@ -44,7 +44,7 @@
             this.AddNewTabButton.Location = new System.Drawing.Point(8, 8);
             this.AddNewTabButton.Margin = new System.Windows.Forms.Padding(8);
             this.AddNewTabButton.Name = "AddNewTabButton";
-            this.AddNewTabButton.Size = new System.Drawing.Size(134, 34);
+            this.AddNewTabButton.Size = new System.Drawing.Size(184, 34);
             this.AddNewTabButton.TabIndex = 1;
             this.AddNewTabButton.Text = "Add New Tab";
             this.AddNewTabButton.UseVisualStyleBackColor = true;
@@ -57,7 +57,7 @@
             this.Header.Location = new System.Drawing.Point(0, 0);
             this.Header.Margin = new System.Windows.Forms.Padding(0);
             this.Header.Name = "Header";
-            this.Header.Size = new System.Drawing.Size(150, 50);
+            this.Header.Size = new System.Drawing.Size(200, 50);
             this.Header.TabIndex = 0;
             // 
             // TabList
@@ -73,7 +73,7 @@
             this.TabList.Name = "TabList";
             this.TabList.RowCount = 1;
             this.TabList.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TabList.Size = new System.Drawing.Size(150, 0);
+            this.TabList.Size = new System.Drawing.Size(200, 0);
             this.TabList.TabIndex = 2;
             // 
             // TabListContainer
@@ -86,7 +86,7 @@
             this.TabListContainer.Location = new System.Drawing.Point(0, 50);
             this.TabListContainer.Margin = new System.Windows.Forms.Padding(0);
             this.TabListContainer.Name = "TabListContainer";
-            this.TabListContainer.Size = new System.Drawing.Size(150, 451);
+            this.TabListContainer.Size = new System.Drawing.Size(200, 451);
             this.TabListContainer.TabIndex = 2;
             // 
             // MainForm
@@ -98,9 +98,9 @@
             this.Controls.Add(this.Header);
             this.DoubleBuffered = true;
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
-            this.Padding = new System.Windows.Forms.Padding(150, 0, 0, 0);
+            this.Padding = new System.Windows.Forms.Padding(200, 0, 0, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Web Browser";
             this.Header.ResumeLayout(false);
