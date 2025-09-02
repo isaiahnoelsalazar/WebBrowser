@@ -93,7 +93,7 @@ namespace Web_Browser
             Tabs.Remove(NewTab);
             TabCount--;
 
-            if (NewTab == ActiveTab && Tabs.Count > 1)
+            if (NewTab == ActiveTab && Tabs.Count > 0)
             {
                 SelectTab(Tabs[Tabs.Count - 1]);
             }
