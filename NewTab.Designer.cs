@@ -30,6 +30,9 @@
         {
             this.WebView = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.AddressBar = new System.Windows.Forms.TextBox();
+            this.BackButton = new System.Windows.Forms.Button();
+            this.ForwardButton = new System.Windows.Forms.Button();
+            this.RefreshButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.WebView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,15 +57,48 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AddressBar.BackColor = System.Drawing.SystemColors.Control;
             this.AddressBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddressBar.Location = new System.Drawing.Point(17, 17);
+            this.AddressBar.Location = new System.Drawing.Point(211, 17);
             this.AddressBar.Margin = new System.Windows.Forms.Padding(8);
             this.AddressBar.Name = "AddressBar";
-            this.AddressBar.Size = new System.Drawing.Size(766, 26);
+            this.AddressBar.Size = new System.Drawing.Size(572, 26);
             this.AddressBar.TabIndex = 1;
             this.AddressBar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.AddressBar.Click += new System.EventHandler(this.AddressBar_Click);
             this.AddressBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddressBar_KeyDown);
             this.AddressBar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.AddressBar_KeyUp);
+            // 
+            // BackButton
+            // 
+            this.BackButton.Location = new System.Drawing.Point(13, 13);
+            this.BackButton.Margin = new System.Windows.Forms.Padding(4);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(50, 34);
+            this.BackButton.TabIndex = 2;
+            this.BackButton.Text = "Back";
+            this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+            // 
+            // ForwardButton
+            // 
+            this.ForwardButton.Location = new System.Drawing.Point(71, 13);
+            this.ForwardButton.Margin = new System.Windows.Forms.Padding(4);
+            this.ForwardButton.Name = "ForwardButton";
+            this.ForwardButton.Size = new System.Drawing.Size(60, 34);
+            this.ForwardButton.TabIndex = 3;
+            this.ForwardButton.Text = "Forward";
+            this.ForwardButton.UseVisualStyleBackColor = true;
+            this.ForwardButton.Click += new System.EventHandler(this.ForwardButton_Click);
+            // 
+            // RefreshButton
+            // 
+            this.RefreshButton.Location = new System.Drawing.Point(139, 13);
+            this.RefreshButton.Margin = new System.Windows.Forms.Padding(4);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(60, 34);
+            this.RefreshButton.TabIndex = 4;
+            this.RefreshButton.Text = "Refresh";
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
             // NewTab
             // 
@@ -70,11 +106,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 480);
+            this.Controls.Add(this.RefreshButton);
+            this.Controls.Add(this.ForwardButton);
+            this.Controls.Add(this.BackButton);
             this.Controls.Add(this.AddressBar);
             this.Controls.Add(this.WebView);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "NewTab";
             this.Text = "NewTab";
             ((System.ComponentModel.ISupportInitialize)(this.WebView)).EndInit();
@@ -86,5 +125,8 @@
         #endregion
         private Microsoft.Web.WebView2.WinForms.WebView2 WebView;
         private System.Windows.Forms.TextBox AddressBar;
+        private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.Button ForwardButton;
+        private System.Windows.Forms.Button RefreshButton;
     }
 }

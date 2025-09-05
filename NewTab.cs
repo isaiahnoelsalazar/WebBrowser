@@ -9,7 +9,7 @@ namespace Web_Browser
     {
         bool IsAddressBarFocused = false;
 
-        public NewTab(MainForm MainForm)
+        public NewTab(string URL)
         {
             InitializeComponent();
 
@@ -25,8 +25,8 @@ namespace Web_Browser
                 IsAddressBarFocused = false;
             };
 
-            WebView.Source = new Uri("https://www.google.com");
-            WebView.ContentLoading += (s, e) =>
+            WebView.Source = new Uri(URL);
+            WebView.CoreWebView2InitializationCompleted += (s, e) =>
             {
                 WebView.CoreWebView2.DocumentTitleChanged += (sndr, evnt) =>
                 {
@@ -35,8 +35,8 @@ namespace Web_Browser
                 };
                 WebView.CoreWebView2.NewWindowRequested += (sndr, evnt) =>
                 {
-                    WebView.CoreWebView2.Navigate(evnt.Uri);
                     evnt.Handled = true;
+                    GlobalMainForm.AddNewTab(evnt.Uri);
                 };
             };
         }
@@ -67,6 +67,21 @@ namespace Web_Browser
                 AddressBar.Text = WebView.Source.ToString();
                 WebView.Focus();
             }
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            WebView.CoreWebView2.GoBack();
+        }
+
+        private void ForwardButton_Click(object sender, EventArgs e)
+        {
+            WebView.CoreWebView2.GoForward();
+        }
+
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            WebView.CoreWebView2.Reload();
         }
     }
 }

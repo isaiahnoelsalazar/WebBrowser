@@ -14,18 +14,20 @@ namespace Web_Browser
         {
             InitializeComponent();
 
+            GlobalMainForm = this;
+
             TabList.Controls.Clear();
             TabList.RowStyles.Clear();
             TabList.VerticalScroll.Visible = true;
             TabList.HorizontalScroll.Enabled = false;
             TabList.HorizontalScroll.Visible = false;
-            AddNewTab();
+            AddNewTab("https://www.google.com");
         }
 
-        public void AddNewTab()
+        public void AddNewTab(string URL)
         {
             RowStyle Row = new RowStyle(SizeType.Absolute, 48f);
-            NewTab NewTab = new NewTab(this);
+            NewTab NewTab = new NewTab(URL);
             TableLayoutPanel Panel = new TableLayoutPanel
             {
                 ColumnCount = 2
@@ -65,6 +67,7 @@ namespace Web_Browser
             Tabs.Add(NewTab);
             SelectTab(NewTab);
             TabCount++;
+            Console.WriteLine("Added new tab with URL: " + URL);
         }
 
         void SelectTab(NewTab NewTab)
@@ -101,7 +104,7 @@ namespace Web_Browser
 
         private void AddNewTabButton_Click(object sender, EventArgs e)
         {
-            AddNewTab();
+            AddNewTab("https://www.google.com");
         }
     }
 }
