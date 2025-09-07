@@ -67,7 +67,6 @@ namespace Web_Browser
             Tabs.Add(NewTab);
             SelectTab(NewTab);
             TabCount++;
-            Console.WriteLine("Added new tab with URL: " + URL);
         }
 
         void SelectTab(NewTab NewTab)
