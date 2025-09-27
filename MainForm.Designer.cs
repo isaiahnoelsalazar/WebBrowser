@@ -103,6 +103,7 @@
             this.Padding = new System.Windows.Forms.Padding(200, 0, 0, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Web Browser";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Header.ResumeLayout(false);
             this.TabListContainer.ResumeLayout(false);
             this.TabListContainer.PerformLayout();
